@@ -9,7 +9,15 @@ package pencilsimulator;
  *
  * @author joexi
  */
-public class PencilSimulator {
+public class PencilSimulator{
+    
+    public String paperText;
+    
+    public PencilSimulator(String initialText){
+        paperText = initialText;        
+    }
+    
+    
 
     /**
      * @param args the command line arguments

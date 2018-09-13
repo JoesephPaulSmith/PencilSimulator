@@ -37,16 +37,10 @@ public class PencilSimulatorTest {
     public void tearDown() {
     }
 
-    /**
-     * Test of main method, of class PencilSimulator.
-     */
     @Test
-    public void testMain() {
-        System.out.println("main");
-        String[] args = null;
-        PencilSimulator.main(args);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void whenSimulatorStartedInitialPaperTextIsAsSpecified(){
+        PencilSimulator pencilsimulator = new PencilSimulator("This is a test piece of paper");
+        assertEquals("This is a test piece of paper", pencilsimulator.paperText);
     }
     
 }
