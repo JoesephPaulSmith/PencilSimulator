@@ -37,7 +37,10 @@ public class PencilSimulator{
             }        
             else if(Character.isLowerCase(str.charAt(i))){
                 retCost = retCost + 1;
-            }            
+            } 
+            else if(Character.isUpperCase(str.charAt(i))){
+                retCost = retCost + 2;
+            } 
         }
         return(retCost);
     }
