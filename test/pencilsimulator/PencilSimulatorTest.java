@@ -87,4 +87,14 @@ public class PencilSimulatorTest {
         assertTrue(pencilsimulator.calculateWritingCost("\n dD") == 3);
     }
     
+    @Test
+    public void letsAssumeOtherCharactersCostOne(){
+        assertTrue(pencilsimulator.calculateWritingCost("Total is 5.56") == 12);
+        assertTrue(pencilsimulator.calculateWritingCost("Phone # is 734-972-8096") == 21);
+        assertTrue(pencilsimulator.calculateWritingCost("Smith Heating & Cooling") == 23);
+        assertTrue(pencilsimulator.calculateWritingCost("2 + 2 = 4") == 5);
+        assertTrue(pencilsimulator.calculateWritingCost("I am 'working'") == 13);
+        assertTrue(pencilsimulator.calculateWritingCost("See: item 1, item 2, and item 3") == 25);
+    }
+    
 }
