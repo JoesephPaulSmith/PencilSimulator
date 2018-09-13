@@ -18,6 +18,8 @@ import static org.junit.Assert.*;
  */
 public class PencilSimulatorTest {
     
+    PencilSimulator pencilsimulator;
+    
     public PencilSimulatorTest() {
     }
     
@@ -31,6 +33,7 @@ public class PencilSimulatorTest {
     
     @Before
     public void setUp() {
+        pencilsimulator = new PencilSimulator("This is a test piece of paper");
     }
     
     @After
@@ -39,7 +42,6 @@ public class PencilSimulatorTest {
 
     @Test
     public void whenSimulatorStartedInitialPaperTextIsAsSpecified(){
-        PencilSimulator pencilsimulator = new PencilSimulator("This is a test piece of paper");
         assertEquals("This is a test piece of paper", pencilsimulator.paperText);
     }
     
