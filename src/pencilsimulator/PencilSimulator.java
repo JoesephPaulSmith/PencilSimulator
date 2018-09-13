@@ -46,6 +46,7 @@ public class PencilSimulator{
                 }
                 else if(k >= currPos && k <= tempPos){
                     tempPaperText = tempPaperText.concat(" ");
+                    eraserHealth = eraserHealth - 1;
                 }
                 else{
                     tempPaperText = tempPaperText.concat(paperText.substring(k, k+1));
