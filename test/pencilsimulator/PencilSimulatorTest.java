@@ -53,4 +53,10 @@ public class PencilSimulatorTest {
         assertTrue(200 == pencilsimulator.eraserHealth);
     }
     
+    @Test
+    public void whenIWriteWithPencilStringIsAppended(){
+        pencilsimulator.paperText = pencilsimulator.paperText + " and we are writing on it";
+        assertEquals(pencilsimulator.paperText, "This is a test piece of paper and we are writing on it");
+    }
+    
 }
