@@ -171,13 +171,13 @@ public class PencilSimulatorTest {
         assertTrue(pencilsimulator.eraseText("pick") == 29);
     }
     
-    /*@Test
+    @Test
     public void writerWantsToEraseLastTextFirstToRemoveMistakes(){
         pencilsimulator = new PencilSimulator("Peter Piper picked a peck of pickled peppers", 50, 20, 200);
         pencilsimulator.eraseText("pick");
         assertEquals(pencilsimulator.paperText, "Peter Piper picked a peck of     led peppers");
         pencilsimulator.eraseText("pick");
         assertEquals(pencilsimulator.paperText, "Peter Piper     ed a peck of     led peppers");
-    }*/
+    }
     
 }

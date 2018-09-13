@@ -29,6 +29,7 @@ public class PencilSimulator{
         int prevPos = 0;        
         int currPos = paperText.indexOf(eraseTarget, prevPos);
         int tempPos;
+        String tempPaperText = "";
         while(prevPos-1 != currPos && currPos+1 < paperText.length()){
             prevPos = currPos+1;
             tempPos = paperText.indexOf(eraseTarget, prevPos);
@@ -36,6 +37,23 @@ public class PencilSimulator{
                currPos = tempPos; 
             }            
         }
+        
+        if(currPos != -1){
+            tempPos = currPos + eraseTarget.length() - 1;
+            for(int k = 0; k < paperText.length(); k++){
+                if(k < currPos){
+                    tempPaperText = tempPaperText.concat(paperText.substring(k, k+1));
+                }
+                else if(k >= currPos && k <= tempPos){
+                    tempPaperText = tempPaperText.concat(" ");
+                }
+                else{
+                    tempPaperText = tempPaperText.concat(paperText.substring(k, k+1));
+                }
+            }
+            paperText = tempPaperText;
+        }
+        
         return(currPos);
     }
     
