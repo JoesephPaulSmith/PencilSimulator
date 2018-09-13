@@ -137,8 +137,15 @@ public class PencilSimulatorTest {
         pencilsimulator.addText(" is A chore");
         assertEquals(pencilsimulator.paperText, "Sharpening pencils is A      ");
         pencilsimulator.sharpenPencil();
+        assertTrue(pencilsimulator.pointHealth == 4);
         pencilsimulator.addText("pain");
         assertEquals(pencilsimulator.paperText, "Sharpening pencils is A      pain");
+    }
+    
+    @Test
+    public void sharpeningAPencilShortensThePencil(){
+        pencilsimulator = new PencilSimulator("Sharpening pencils", 4, 20, 200);
+        pencilsimulator.sharpenPencil();
     }
     
 }
