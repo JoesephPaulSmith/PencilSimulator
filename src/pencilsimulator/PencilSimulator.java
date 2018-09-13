@@ -40,11 +40,14 @@ public class PencilSimulator{
         
         if(currPos != -1){
             tempPos = currPos + eraseTarget.length() - 1;
+            if(eraserHealth < eraseTarget.length()){
+                currPos = tempPos - eraserHealth + 1;
+            }
             for(int k = 0; k < paperText.length(); k++){
                 if(k < currPos){
                     tempPaperText = tempPaperText.concat(paperText.substring(k, k+1));
                 }
-                else if(k >= currPos && k <= tempPos){
+                else if(k >= currPos && k <= tempPos && eraserHealth > 0){
                     tempPaperText = tempPaperText.concat(" ");
                     eraserHealth = eraserHealth - 1;
                 }

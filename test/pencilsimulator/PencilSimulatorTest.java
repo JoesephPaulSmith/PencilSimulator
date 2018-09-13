@@ -187,4 +187,11 @@ public class PencilSimulatorTest {
         assertTrue(pencilsimulator.eraserHealth == 196);
     }
     
+    @Test
+    public void nearDeadEraserWillOnlyErasePartOfWord(){
+        pencilsimulator = new PencilSimulator("Peter Piper picked a peck of pickled peppers", 50, 20, 3);
+        pencilsimulator.eraseText("pick");
+        assertEquals(pencilsimulator.paperText, "Peter Piper picked a peck of p   led peppers");
+    }
+    
 }
