@@ -59,4 +59,12 @@ public class PencilSimulatorTest {
         assertEquals(pencilsimulator.paperText, "This is a test piece of paper and we are writing on it");
     }
     
+    @Test
+    public void spacesAndNewLinesCostNothing(){
+        assertTrue(pencilsimulator.calculateWritingCost("\n") == 0);
+        assertTrue(pencilsimulator.calculateWritingCost(" ") == 0);
+        assertTrue(pencilsimulator.calculateWritingCost(" \n") == 0);
+        assertTrue(pencilsimulator.calculateWritingCost("\n ") == 0);
+    }
+    
 }

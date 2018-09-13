@@ -29,6 +29,11 @@ public class PencilSimulator{
         paperText = paperText + newText;
     }
     
+    public Integer calculateWritingCost(String str){
+        Integer retCost = 0;
+        return(retCost);
+    }
+    
     
 
     /**
