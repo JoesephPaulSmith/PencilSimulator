@@ -97,4 +97,11 @@ public class PencilSimulatorTest {
         assertTrue(pencilsimulator.calculateWritingCost("See: item 1, item 2, and item 3") == 25);
     }
     
+    @Test
+    public void writingCostsThePencilPointHealthPOints(){
+        pencilsimulator = new PencilSimulator("", 50, 20, 200);
+        pencilsimulator.addText("Writing costs lead");
+        assertTrue(33 == pencilsimulator.pointHealth);
+    }
+    
 }

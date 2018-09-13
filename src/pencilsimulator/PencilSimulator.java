@@ -27,6 +27,7 @@ public class PencilSimulator{
     
     public void addText(String newText){
         paperText = paperText + newText;
+        pointHealth = pointHealth - calculateWritingCost(newText);
     }
     
     public Integer calculateWritingCost(String str){
