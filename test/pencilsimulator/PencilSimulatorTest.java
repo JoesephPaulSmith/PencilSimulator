@@ -149,4 +149,20 @@ public class PencilSimulatorTest {
         assertTrue(pencilsimulator.pencilLength == 19);
     }
     
+    @Test
+    public void pencilSharpenedOutOfExistenceCantWrite(){
+        pencilsimulator = new PencilSimulator("Sharpening pencils", 9, 1, 200);
+        pencilsimulator.addText(" out of work");
+        assertEquals(pencilsimulator.paperText, "Sharpening pencils out of work");
+        assertTrue(pencilsimulator.pointHealth == 0);
+        pencilsimulator.sharpenPencil();
+        assertTrue(pencilsimulator.pointHealth == 9);
+        assertTrue(pencilsimulator.pencilLength == 0);
+        pencilsimulator.addText(" and into obsolescence");
+        pencilsimulator.sharpenPencil();
+        assertTrue(pencilsimulator.pointHealth == 0);
+        assertTrue(pencilsimulator.pencilLength == 0);
+        assertEquals(pencilsimulator.paperText, "Sharpening pencils out of work and into ob          ");
+    }
+    
 }
