@@ -27,10 +27,26 @@ public class PencilSimulator{
     
     public Integer addText(String newText){
         Integer tempPointHealth = pointHealth - calculateWritingCost(newText);
+        Integer healthToWriteWith;
+        Integer characterCost;
         String textToWrite = "";        
         if(tempPointHealth < 0){
+            healthToWriteWith = pointHealth;
             for(int j = 0; j < newText.length(); j++){
-                textToWrite = textToWrite + " ";
+                if(healthToWriteWith > 0){
+                    String charToWrite = "" + newText.charAt(j);
+                    if(healthToWriteWith > 0){
+                        textToWrite = textToWrite + charToWrite;
+                    }
+                    else{
+                        textToWrite = textToWrite + " ";
+                    }
+                    characterCost = calculateWritingCost(charToWrite);
+                    healthToWriteWith = healthToWriteWith - characterCost;
+                }
+                else{
+                    textToWrite = textToWrite + " ";
+                }                
             }
             paperText = paperText + textToWrite;
             pointHealth = 0;

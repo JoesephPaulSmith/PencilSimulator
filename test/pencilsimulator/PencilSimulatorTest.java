@@ -121,6 +121,14 @@ public class PencilSimulatorTest {
         assertEquals(pencilsimulator.paperText, "Let us do six spaces after this      ");
     }
     
-    
+    @Test 
+    public void whenIWriteWithAPencilOfLittleHealthItWritesThenSpacesOut(){
+        pencilsimulator = new PencilSimulator("Let us do 3 spaces after this", 3, 20, 200);
+        pencilsimulator.addText(" really");
+        assertEquals(pencilsimulator.paperText, "Let us do 3 spaces after this rea   ");
+        pencilsimulator = new PencilSimulator("Let us do 4 spaces after this", 3, 20, 200);
+        pencilsimulator.addText(" Really");
+        assertEquals(pencilsimulator.paperText, "Let us do 4 spaces after this Re    ");
+    }
     
 }
