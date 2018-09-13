@@ -54,7 +54,7 @@ public class PencilSimulatorTest {
     }
     
     @Test
-    public void whenIWriteWithPencilStringIsAppended(){
+    public void writerWantsToWriteWithPencilToBetterRememberThoughts(){
         pencilsimulator.addText(" and we are writing on it");
         assertEquals(pencilsimulator.paperText, "This is a test piece of paper and we are writing on it");
     }
@@ -98,7 +98,7 @@ public class PencilSimulatorTest {
     }
     
     @Test
-    public void writingCostsPencilPointHealth(){
+    public void pencilManufacturerWantsPencilsToGoDullToSellMorePencils(){
         pencilsimulator = new PencilSimulator("", 50, 20, 200);
         Integer tpHealth = pencilsimulator.addText("Writing costs lead");
         assertTrue(33 == pencilsimulator.pointHealth);
@@ -129,6 +129,11 @@ public class PencilSimulatorTest {
         pencilsimulator = new PencilSimulator("Let us do 4 spaces after this", 3, 20, 200);
         pencilsimulator.addText(" Really");
         assertEquals(pencilsimulator.paperText, "Let us do 4 spaces after this Re    ");
+    }
+    
+    @Test
+    public void writerWantsToSharpenPencilToKeepWritingAfterItDulls(){
+        
     }
     
 }
