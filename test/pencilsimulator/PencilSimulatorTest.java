@@ -194,4 +194,11 @@ public class PencilSimulatorTest {
         assertEquals(pencilsimulator.paperText, "Peter Piper picked a peck of p   led peppers");
     }
     
+    @Test
+    public void erasingWhiteSpaceCostsNothing(){
+        pencilsimulator = new PencilSimulator("Peter Piper\npicked a peck\nof pickled peppers", 50, 20, 11);
+        pencilsimulator.eraseText("\npicked a peck");
+        assertEquals(pencilsimulator.paperText, "Peter Piper              \nof pickled peppers");
+    }
+    
 }

@@ -40,8 +40,8 @@ public class PencilSimulator{
         
         if(currPos != -1){
             tempPos = currPos + eraseTarget.length() - 1;
-            if(eraserHealth < eraseTarget.length()){
-                currPos = tempPos - eraserHealth + 1;
+            if(eraserHealth < calculateErasureCost(eraseTarget)){
+                currPos = tempPos - eraserHealth - whiteSpaceCount(eraseTarget) + 1;
             }
             for(int k = 0; k < paperText.length(); k++){
                 if(k < currPos){
@@ -49,7 +49,9 @@ public class PencilSimulator{
                 }
                 else if(k >= currPos && k <= tempPos && eraserHealth > 0){
                     tempPaperText = tempPaperText.concat(" ");
-                    eraserHealth = eraserHealth - 1;
+                    if(calculateErasureCost(paperText.substring(k, k+1)) > 0){
+                        eraserHealth = eraserHealth - 1;
+                    }
                 }
                 else{
                     tempPaperText = tempPaperText.concat(paperText.substring(k, k+1));
@@ -114,6 +116,29 @@ public class PencilSimulator{
             }
         }
         return(retCost);
+    }
+    
+    public Integer calculateErasureCost(String str){
+        Integer retCost = 0;
+        for(int i = 0; i < str.length(); i++){
+            if(Character.isWhitespace(str.charAt(i))){
+                retCost = retCost + 0;
+            }        
+            else{
+                retCost = retCost + 1;
+            }
+        }
+        return(retCost);
+    }
+    
+    public Integer whiteSpaceCount(String str){
+        Integer retCount = 0;
+        for(int i = 0; i < str.length(); i++){
+            if(Character.isWhitespace(str.charAt(i))){
+                retCount = retCount + 1;
+            }  
+        }
+        return(retCount);
     }
     
     
