@@ -116,6 +116,11 @@ public class PencilSimulatorTest {
         pencilsimulator = new PencilSimulator("Let us do six spaces after this", 0, 20, 200);
         pencilsimulator.addText("really");
         assertEquals(pencilsimulator.paperText, "Let us do six spaces after this      ");
+        pencilsimulator = new PencilSimulator("Let us do six spaces after this", 0, 20, 200);
+        pencilsimulator.addText("Really");
+        assertEquals(pencilsimulator.paperText, "Let us do six spaces after this      ");
     }
+    
+    
     
 }
