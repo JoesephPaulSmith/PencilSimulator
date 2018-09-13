@@ -25,6 +25,11 @@ public class PencilSimulator{
         eraserHealth = initEraserHealth;
     }
     
+    public Integer sharpenPencil(){
+        pointHealth = MAX_POINT_HEALTH;
+        return(pointHealth);
+    }
+    
     public Integer addText(String newText){
         Integer tempPointHealth = pointHealth - calculateWritingCost(newText);
         Integer characterCost;
