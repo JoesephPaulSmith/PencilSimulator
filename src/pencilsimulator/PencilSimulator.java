@@ -25,6 +25,20 @@ public class PencilSimulator{
         eraserHealth = initEraserHealth;
     }
     
+    public Integer eraseText(String eraseTarget){
+        int prevPos = 0;        
+        int currPos = paperText.indexOf(eraseTarget, prevPos);
+        int tempPos;
+        while(prevPos-1 != currPos && currPos+1 < paperText.length()){
+            prevPos = currPos+1;
+            tempPos = paperText.indexOf(eraseTarget, prevPos);
+            if(tempPos != -1){
+               currPos = tempPos; 
+            }            
+        }
+        return(currPos);
+    }
+    
     public Integer sharpenPencil(){
         if(pencilLength > 0){
             pointHealth = MAX_POINT_HEALTH;
