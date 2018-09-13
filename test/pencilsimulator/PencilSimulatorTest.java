@@ -100,8 +100,22 @@ public class PencilSimulatorTest {
     @Test
     public void writingCostsPencilPointHealth(){
         pencilsimulator = new PencilSimulator("", 50, 20, 200);
-        pencilsimulator.addText("Writing costs lead");
+        Integer tpHealth = pencilsimulator.addText("Writing costs lead");
         assertTrue(33 == pencilsimulator.pointHealth);
+    }
+    
+    @Test
+    public void whenAZeroPointPencilWritesItsHealthBecomesNegative(){
+        pencilsimulator = new PencilSimulator("", 0, 20, 200);
+        assertTrue(pencilsimulator.addText("really") == -6);
+        assertTrue(pencilsimulator.addText("Really") == -7);
+    }
+    
+    @Test
+    public void zeroPointPencilsWriteSpaces(){
+        pencilsimulator = new PencilSimulator("Let us do six spaces after this", 0, 20, 200);
+        pencilsimulator.addText("really");
+        assertEquals(pencilsimulator.paperText, "Let us do six spaces after this      ");
     }
     
 }
