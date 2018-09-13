@@ -67,4 +67,12 @@ public class PencilSimulatorTest {
         assertTrue(pencilsimulator.calculateWritingCost("\n ") == 0);
     }
     
+    @Test
+    public void spacesAndNewLinesCostNothingAndLowerCasesCostOnePoint(){
+        assertTrue(pencilsimulator.calculateWritingCost("a\n") == 1);
+        assertTrue(pencilsimulator.calculateWritingCost("b ") == 1);
+        assertTrue(pencilsimulator.calculateWritingCost(" \nc") == 1);
+        assertTrue(pencilsimulator.calculateWritingCost("\n d") == 1);
+    }
+    
 }

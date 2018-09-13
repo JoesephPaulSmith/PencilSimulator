@@ -31,6 +31,14 @@ public class PencilSimulator{
     
     public Integer calculateWritingCost(String str){
         Integer retCost = 0;
+        for(int i = 0; i < str.length(); i++){
+            if(Character.isWhitespace(str.charAt(i))){
+                retCost = retCost + 0;
+            }        
+            else if(Character.isLowerCase(str.charAt(i))){
+                retCost = retCost + 1;
+            }            
+        }
         return(retCost);
     }
     
