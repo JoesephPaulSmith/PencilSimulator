@@ -33,7 +33,7 @@ public class PencilSimulatorTest {
     
     @Before
     public void setUp() {
-        pencilsimulator = new PencilSimulator("This is a test piece of paper");
+        pencilsimulator = new PencilSimulator("This is a test piece of paper", 50, 20, 200);
     }
     
     @After
@@ -43,6 +43,14 @@ public class PencilSimulatorTest {
     @Test
     public void whenSimulatorStartedInitialPaperTextIsAsSpecified(){
         assertEquals("This is a test piece of paper", pencilsimulator.paperText);
+    }
+    
+    @Test
+    public void whenSimulatorStartedPencilVitalsAreAsSpecified(){
+        assertTrue(50 == pencilsimulator.pointHealth);
+        assertTrue(50 == pencilsimulator.MAX_POINT_HEALTH);
+        assertTrue(20 == pencilsimulator.pencilLength);
+        assertTrue(200 == pencilsimulator.eraserHealth);
     }
     
 }

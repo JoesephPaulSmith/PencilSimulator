@@ -12,9 +12,17 @@ package pencilsimulator;
 public class PencilSimulator{
     
     public String paperText;
+    public Integer pointHealth;
+    public Integer MAX_POINT_HEALTH;
+    public Integer pencilLength;
+    public Integer eraserHealth;
     
-    public PencilSimulator(String initialText){
-        paperText = initialText;        
+    public PencilSimulator(String initialText, Integer initPointHealth, Integer initPencilLength, Integer initEraserHealth){
+        paperText = initialText;
+        pointHealth = initPointHealth;
+        MAX_POINT_HEALTH = initPointHealth;
+        pencilLength = initPencilLength;
+        eraserHealth = initEraserHealth;
     }
     
     
