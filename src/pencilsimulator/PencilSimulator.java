@@ -25,6 +25,10 @@ public class PencilSimulator{
         eraserHealth = initEraserHealth;
     }
     
+    public void addText(String newText){
+        paperText = paperText + newText;
+    }
+    
     
 
     /**
