@@ -146,6 +146,7 @@ public class PencilSimulatorTest {
     public void sharpeningAPencilShortensThePencil(){
         pencilsimulator = new PencilSimulator("Sharpening pencils", 4, 20, 200);
         pencilsimulator.sharpenPencil();
+        assertTrue(pencilsimulator.pencilLength == 19);
     }
     
 }
