@@ -162,7 +162,8 @@ public class PencilSimulatorTest {
         pencilsimulator.sharpenPencil();
         assertTrue(pencilsimulator.pointHealth == 0);
         assertTrue(pencilsimulator.pencilLength == 0);
-        assertEquals(pencilsimulator.paperText, "Sharpening pencils out of work and into ob          ");
+        pencilsimulator.addText("four");
+        assertEquals(pencilsimulator.paperText, "Sharpening pencils out of work and into ob              ");
     }
     
     @Test
@@ -199,6 +200,28 @@ public class PencilSimulatorTest {
         pencilsimulator = new PencilSimulator("Peter Piper\npicked a peck\nof pickled peppers", 50, 20, 11);
         pencilsimulator.eraseText("\npicked a peck");
         assertEquals(pencilsimulator.paperText, "Peter Piper              \nof pickled peppers");
+    }
+    
+    //The editing spec is weird... I'm going to achieve the 
+    //"Apple a day" story, and add a feature or two for completeness
+    
+    //Tracking one erased word is already kinda done by currPos in eraseText()
+    //Let's track multiple
+    @Test
+    public void simulatorTracksErasedWordPositions(){
+        pencilsimulator = new PencilSimulator("An apple a day keeps the doctor away", 50, 20, 200);
+        pencilsimulator.eraseText("apple");
+        assertEquals(pencilsimulator.paperText, "An       a day keeps the doctor away");
+        pencilsimulator.eraseText("doctor");
+        assertEquals(pencilsimulator.paperText, "An       a day keeps the        away");
+        assertTrue(pencilsimulator.erasedWordLocs.remove() == 3);
+        assertTrue(pencilsimulator.erasedWordLocs.remove() == 25);
+    }
+    
+    //Testing the story here
+    @Test
+    public void writerWantsToEditTextToChangeWritingWithoutStartingOver(){
+        
     }
     
 }

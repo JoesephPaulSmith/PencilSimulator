@@ -5,6 +5,9 @@
  */
 package pencilsimulator;
 
+import java.util.Queue;
+import java.util.LinkedList;
+
 /**
  *
  * @author joexi
@@ -16,6 +19,7 @@ public class PencilSimulator{
     public Integer MAX_POINT_HEALTH;
     public Integer pencilLength;
     public Integer eraserHealth;
+    public Queue<Integer> erasedWordLocs;
     
     public PencilSimulator(String initialText, Integer initPointHealth, Integer initPencilLength, Integer initEraserHealth){
         paperText = initialText;
@@ -23,6 +27,7 @@ public class PencilSimulator{
         MAX_POINT_HEALTH = initPointHealth;
         pencilLength = initPencilLength;
         eraserHealth = initEraserHealth;
+        erasedWordLocs = new LinkedList<Integer>();
     }
     
     public Integer eraseText(String eraseTarget){
@@ -39,6 +44,8 @@ public class PencilSimulator{
         }
         
         if(currPos != -1){
+            //Store currPos as we embed backward erasing capability beyond here
+            erasedWordLocs.add(currPos);
             tempPos = currPos + eraseTarget.length() - 1;
             if(eraserHealth < calculateErasureCost(eraseTarget)){
                 currPos = tempPos - eraserHealth - whiteSpaceCount(eraseTarget) + 1;
