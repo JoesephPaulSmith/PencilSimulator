@@ -30,6 +30,40 @@ public class PencilSimulator{
         erasedWordLocs = new LinkedList<Integer>();
     }
     
+    public Integer insertText(String iText){
+        if(erasedWordLocs.isEmpty()){
+            System.out.println("Cannot insert anywhere!");
+            return(0);
+        }
+        String tempPaperText = "";        
+        Integer insertStart = erasedWordLocs.remove();
+        Integer insertIter = 0;
+        for(int k = 0; k < paperText.length(); k++){
+            if(k < insertStart){
+                tempPaperText = tempPaperText.concat(paperText.substring(k, k+1));
+            }
+            else if(k >= insertStart && insertIter < iText.length()){
+                if(pointHealth > 0){
+                    tempPaperText = tempPaperText.concat(iText.substring(insertIter, insertIter+1));
+                }
+                else{
+                    tempPaperText = tempPaperText.concat(" ");
+                }
+                pointHealth = pointHealth - calculateWritingCost("" + iText.charAt(insertIter));
+                if(pointHealth < 0){
+                    pointHealth = 0;
+                }
+                insertIter = insertIter + 1;
+            }
+            else{
+                tempPaperText = tempPaperText.concat(paperText.substring(k, k+1));
+            }
+        }
+        
+        paperText = tempPaperText;
+        return(0);
+    }
+    
     public Integer eraseText(String eraseTarget){
         int prevPos = 0;        
         int currPos = paperText.indexOf(eraseTarget, prevPos);
