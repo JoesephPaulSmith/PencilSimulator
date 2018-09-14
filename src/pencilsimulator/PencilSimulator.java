@@ -33,7 +33,7 @@ public class PencilSimulator{
     public Integer insertText(String iText){
         if(erasedWordLocs.isEmpty()){
             System.out.println("Cannot insert anywhere!");
-            return(0);
+            return(-1);
         }
         String tempPaperText = "";        
         Integer insertStart = erasedWordLocs.remove();

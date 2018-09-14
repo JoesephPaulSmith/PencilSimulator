@@ -225,17 +225,23 @@ public class PencilSimulatorTest {
     //Testing the story here
     @Test
     public void writerWantsToEditTextToChangeWritingWithoutStartingOver(){
+        Integer successfulInsert;
+        Integer failedInsert;
         pencilsimulator = new PencilSimulator("An apple a day keeps the doctor away", 50, 20, 200);
         pencilsimulator.eraseText("apple");
         assertEquals(pencilsimulator.paperText, "An       a day keeps the doctor away");
         pencilsimulator.eraseText("doctor");
         assertEquals(pencilsimulator.paperText, "An       a day keeps the        away");
-        pencilsimulator.insertText("onion");
+        successfulInsert = pencilsimulator.insertText("onion");
         assertTrue(pencilsimulator.pointHealth == 45);
         assertEquals(pencilsimulator.paperText, "An onion a day keeps the        away");
-        pencilsimulator.insertText("spider");
+        successfulInsert = pencilsimulator.insertText("spider");
         assertTrue(pencilsimulator.pointHealth == 39);
         assertEquals(pencilsimulator.paperText, "An onion a day keeps the spider away");
+        failedInsert = pencilsimulator.insertText(" indeed");
+        assertTrue(successfulInsert == 0);
+        assertTrue(failedInsert == -1);
     }
+    
     
 }
