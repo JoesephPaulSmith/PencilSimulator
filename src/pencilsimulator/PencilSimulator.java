@@ -44,10 +44,20 @@ public class PencilSimulator{
             }
             else if(k >= insertStart && insertIter < iText.length()){
                 if(pointHealth > 0){
-                    tempPaperText = tempPaperText.concat(iText.substring(insertIter, insertIter+1));
+                    if(!Character.isSpaceChar(paperText.charAt(k))){
+                        tempPaperText = tempPaperText.concat("@");
+                    }
+                    else{
+                        tempPaperText = tempPaperText.concat(iText.substring(insertIter, insertIter+1));
+                    }
                 }
                 else{
-                    tempPaperText = tempPaperText.concat(" ");
+                    if(!Character.isSpaceChar(paperText.charAt(k))){
+                        tempPaperText = tempPaperText.concat(paperText.substring(k, k+1));
+                    }
+                    else{
+                        tempPaperText = tempPaperText.concat(" ");
+                    }
                 }
                 pointHealth = pointHealth - calculateWritingCost("" + iText.charAt(insertIter));
                 if(pointHealth < 0){

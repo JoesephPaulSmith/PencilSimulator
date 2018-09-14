@@ -234,6 +234,7 @@ public class PencilSimulatorTest {
         assertEquals(pencilsimulator.paperText, "An       a day keeps the        away");
         successfulInsert = pencilsimulator.insertText("onion");
         assertTrue(pencilsimulator.pointHealth == 45);
+        assertTrue(successfulInsert == 0);
         assertEquals(pencilsimulator.paperText, "An onion a day keeps the        away");
         successfulInsert = pencilsimulator.insertText("spider");
         assertTrue(pencilsimulator.pointHealth == 39);
@@ -243,5 +244,27 @@ public class PencilSimulatorTest {
         assertTrue(failedInsert == -1);
     }
     
+    @Test
+    public void insertingTextLargerThanGapMakesCollisionsRepdByAtSymbols(){
+        pencilsimulator = new PencilSimulator("An apple a day keeps the doctor away", 50, 20, 200);
+        pencilsimulator.eraseText("apple");
+        assertEquals(pencilsimulator.paperText, "An       a day keeps the doctor away");
+        pencilsimulator.insertText("artichoke");
+        assertEquals(pencilsimulator.paperText, "An artich@k@ay keeps the doctor away");
+    }
+    
+    @Test
+    public void pencilDiesWhileInsertingTextLargerThanGapMayNotMakeCollisions(){
+        pencilsimulator = new PencilSimulator("An apple a day keeps the doctor away", 7, 20, 200);
+        pencilsimulator.eraseText("apple");
+        assertEquals(pencilsimulator.paperText, "An       a day keeps the doctor away");
+        pencilsimulator.insertText("artichoke");
+        assertEquals(pencilsimulator.paperText, "An artich@ day keeps the doctor away");
+        pencilsimulator = new PencilSimulator("MoneyHoney", 8, 20, 200);
+        pencilsimulator.eraseText("Money");
+        assertEquals(pencilsimulator.paperText, "     Honey");
+        pencilsimulator.insertText("artichokes");
+        assertEquals(pencilsimulator.paperText, "artic@@@ey");       
+    }
     
 }
