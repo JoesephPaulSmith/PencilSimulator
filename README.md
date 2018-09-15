@@ -9,6 +9,7 @@ Let DIRECTORY be a path, such as the following for the Windows 10 Machine I buil
 In a terminal/command prompt/etc:
 
 1.) navigate to DIRECTORY\pencilSimulatorGradle
+
 2.) Enter the command "gradle build"
 
 The build output should proclaim success, and also list the tests that were executed
