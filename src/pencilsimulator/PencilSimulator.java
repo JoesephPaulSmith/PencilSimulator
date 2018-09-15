@@ -192,8 +192,6 @@ public class PencilSimulator{
         return(retCount);
     }
     
-    
-
     /**
      * @param args the command line arguments
      */
